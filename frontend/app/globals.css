@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* Quiet Clinical Precision — design tokens */
+@theme {
+  --color-canvas: #f4f1ea;
+  --color-paper: #fbfaf6;
+  --color-sunken: #ebe7dc;
+  --color-line: #d6d0c1;
+  --color-line-soft: #e6e1d4;
+  --color-ink: #16213a;
+  --color-ink-2: #3f4a63;
+  --color-ink-3: #5c6578;
+  --color-sage: #3a6e63;
+  --color-sage-strong: #2c5a50;
+  --color-sage-soft: #dde9e3;
+  --color-amber: #7d5200;
+  --color-amber-soft: #f5e6c0;
+  --color-alert: #a8231b;
+  --color-alert-soft: #f7dcd8;
+  --color-slate-soft: #e3e6ec;
+  --color-esi2: #b4500a;
+  --color-esi2-soft: #fbe2cc;
+  --color-esi3: #7a5c00;
+  --color-esi3-soft: #f7ecb8;
+
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-mono: "Cascadia Mono", "SF Mono", Consolas, ui-monospace, monospace;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Small-caps instrument label */
+.label {
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-ink-3);
+}
+
+.readout {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+}
+
+/* Viewfinder crop marks: purposeful framing for the camera stage */
+.crop-marks {
+  --m: 14px;
+  --t: 1.5px;
+  --c: rgba(251, 250, 246, 0.85);
+  background:
+    linear-gradient(var(--c), var(--c)) top left / var(--m) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) top left / var(--t) var(--m) no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / var(--m) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) top right / var(--t) var(--m) no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / var(--m) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom left / var(--t) var(--m) no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / var(--m) var(--t) no-repeat,
+    linear-gradient(var(--c), var(--c)) bottom right / var(--t) var(--m) no-repeat;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line) transparent;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+@keyframes alert-in {
+  from { transform: translateY(-4px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.alert-in {
+  animation: alert-in 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-dot,
+  .alert-in {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes acuity-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+.acuity-flash { animation: acuity-flash 1s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .acuity-flash { animation: none; }
+}

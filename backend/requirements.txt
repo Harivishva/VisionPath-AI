@@ -1,0 +1,17 @@
+# Direct dependencies (versions verified in this prototype). Full resolved set: requirements.lock.txt
+fastapi==0.162.0
+uvicorn[standard]==0.54.0
+pydantic==2.14.1
+pydantic-settings==2.16.2
+websockets==17.3
+python-multipart==0.0.32
+numpy==2.5.4
+opencv-python-headless==5.0.0.93
+mediapipe==1.2.0
+scipy==1.18.1
+librosa==1.0.0
+fhir.resources==8.3.0
+httpx==0.28.1
+# Optional local speech-to-text (no API key needed; model downloads on first use):
+faster-whisper==1.2.1
+noisereduce==3.0.3
